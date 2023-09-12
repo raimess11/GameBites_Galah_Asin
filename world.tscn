@@ -1,0 +1,166 @@
+[gd_scene load_steps=10 format=3 uid="uid://c1rpx63thc8a6"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_5jjpe"]
+[ext_resource type="PackedScene" uid="uid://bw7gwtjnheca7" path="res://player.tscn" id="1_iuhso"]
+[ext_resource type="PackedScene" uid="uid://cp7ip1c1iwflm" path="res://enemy.tscn" id="2_3a58c"]
+[ext_resource type="Shader" path="res://CRT.gdshader" id="3_a1m13"]
+[ext_resource type="FontFile" uid="uid://5m7h3ijqm4ei" path="res://assets/ARCADE_N.TTF" id="4_xr0oe"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_80gwa"]
+shader = ExtResource("3_a1m13")
+shader_parameter/crt_curve = 0.05
+shader_parameter/crt_scan_line_color = 0.2
+shader_parameter/aperture_grille_rate = 0.9
+shader_parameter/rf_switch_esque_blur = 1.0
+shader_parameter/white_noise_rate = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgnxv"]
+size = Vector2(1, 1200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2hsm5"]
+size = Vector2(600, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jd646"]
+size = Vector2(600, 150)
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_5jjpe")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_bottom = 300
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_iuhso")]
+position = Vector2(124, 66)
+camera = NodePath("../Camera2D")
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_3a58c")]
+player = NodePath("../Player")
+speed = 150
+NegativeLimit = -300
+PositiveLimit = 300
+
+[node name="Enemy3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_3a58c")]
+position = Vector2(0, -300)
+player = NodePath("../Player")
+speed = 250
+NegativeLimit = -300
+PositiveLimit = 300
+
+[node name="Enemy4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_3a58c")]
+position = Vector2(0, -600)
+player = NodePath("../Player")
+speed = 300
+NegativeLimit = -300
+PositiveLimit = 300
+
+[node name="Enemy2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_3a58c")]
+rotation = 1.5708
+player = NodePath("../Player")
+follow_player = 1
+NegativeLimit = -600
+PositiveLimit = 300
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Win" type="Control" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="CanvasLayer/Win"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -265.5
+offset_top = 120.0
+offset_right = 245.5
+offset_bottom = 199.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_xr0oe")
+theme_override_font_sizes/font_size = 75
+text = "you win"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Restart" type="Button" parent="CanvasLayer/Win"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = 3.0
+offset_right = 88.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_xr0oe")
+theme_override_font_sizes/font_size = 25
+text = "restart"
+flat = true
+
+[node name="Quit" type="Button" parent="CanvasLayer/Win"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = 35.0
+offset_right = 88.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_xr0oe")
+theme_override_font_sizes/font_size = 25
+text = "Quit"
+flat = true
+
+[node name="CRT effect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_80gwa")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Barrier" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="Left" type="CollisionShape2D" parent="Barrier"]
+position = Vector2(300, -300)
+shape = SubResource("RectangleShape2D_cgnxv")
+
+[node name="Right" type="CollisionShape2D" parent="Barrier"]
+position = Vector2(-300, -300)
+shape = SubResource("RectangleShape2D_cgnxv")
+
+[node name="Down" type="CollisionShape2D" parent="Barrier"]
+position = Vector2(0, 300)
+shape = SubResource("RectangleShape2D_2hsm5")
+
+[node name="Top" type="CollisionShape2D" parent="Barrier"]
+position = Vector2(0, -900)
+shape = SubResource("RectangleShape2D_2hsm5")
+
+[node name="Finish" type="Area2D" parent="."]
+position = Vector2(0, -775)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Finish"]
+shape = SubResource("RectangleShape2D_jd646")
+
+[connection signal="pressed" from="CanvasLayer/Win/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/Win/Quit" to="." method="_on_quit_pressed"]
+[connection signal="body_entered" from="Finish" to="." method="_on_finish_body_entered"]
