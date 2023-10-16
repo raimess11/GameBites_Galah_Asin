@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b35pjcl76pioy"]
+
+[ext_resource type="Script" path="res://EnemyPath.gd" id="1_frwvd"]
+[ext_resource type="PackedScene" uid="uid://cp7ip1c1iwflm" path="res://enemy.tscn" id="2_luarq"]
+[ext_resource type="Script" path="res://PathFollow2D.gd" id="3_xtiqp"]
+
+[node name="EnemyPath" type="Path2D" groups=["Enemy"]]
+script = ExtResource("1_frwvd")
+
+[node name="Enemy" parent="." instance=ExtResource("2_luarq")]
+position = Vector2(-275, 0)
+rotation = -0.179853
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(-275, 0)
+rotation = -0.179853
+script = ExtResource("3_xtiqp")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+remote_path = NodePath("../../Enemy")
+
+[node name="_Timer_17944" type="Timer" parent="PathFollow2D"]
+wait_time = 0.2
+one_shot = true
