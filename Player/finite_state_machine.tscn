@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://cv2fw2d0xsqrk"]
+
+[ext_resource type="Script" path="res://Player/FiniteStateMachine.gd" id="1_7ken2"]
+[ext_resource type="Script" path="res://Player/PlayerNormalState.gd" id="2_ugfjm"]
+[ext_resource type="Script" path="res://Player/PlayerTauntState.gd" id="3_6frym"]
+[ext_resource type="Script" path="res://Player/PlayerRunState.gd" id="4_cdxk4"]
+
+[node name="FiniteStateMachine" type="Node"]
+script = ExtResource("1_7ken2")
+
+[node name="PlayerNormalState" type="Node" parent="."]
+script = ExtResource("2_ugfjm")
+
+[node name="PlayerTauntState" type="Node" parent="."]
+script = ExtResource("3_6frym")
+
+[node name="PlayerRunState" type="Node" parent="."]
+script = ExtResource("4_cdxk4")

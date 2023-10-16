@@ -3,31 +3,20 @@ class_name Player
 
 @export var camera: Camera2D
 @export var speed = 400
+@onready var finite_state_machine = $FiniteStateMachine as FiniteStateMachine
+@onready var player_normal_state = $FiniteStateMachine/PlayerNormalState as PlayerNormalState
+@onready var player_taunt_state = $FiniteStateMachine/PlayerTauntState as PlayerTauntState
+@onready var player_run_state = $FiniteStateMachine/PlayerRunState as PlayerRunState
 
 var target = position
 var run = false
+var collision
+var input_direction = Vector2.ZERO
+
+func _ready():
+	player_normal_state.player_taunt.connect(finite_state_machine.change_state.bind(player_taunt_state))
+	player_taunt_state.player_run.connect(finite_state_machine.change_state.bind(player_run_state))
+	player_run_state.player_normal.connect(finite_state_machine.change_state.bind(player_normal_state))
 
 func _physics_process(delta):
 	camera.position.y = self.position.y
-	var input_direction = Input.get_vector("left", "right", "up", "down")
-	
-	if Input.is_action_just_released("rightMouse"):
-		run = true
-	if input_direction != Vector2.ZERO:
-		velocity = finalVelocity(input_direction) * (speed * (1 - (0.8 * float(Input.is_action_pressed("rightMouse")))))
-		move_and_slide()
-	elif Input.is_action_pressed("leftMouse") && !Input.is_action_pressed("rightMouse"):
-		target = get_global_mouse_position()
-		velocity = finalVelocity(position.direction_to(target)) * (speed * (1 + (0.5 * float(run))))
-		if run:
-			print("run")
-		if position.distance_to(target) > 10:
-			move_and_slide()
-		else:
-			run = false
-	else:
-		run = false
-
-func finalVelocity(direction):
-	var vel = direction 
-	return vel
