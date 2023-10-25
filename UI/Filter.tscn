@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://2u0iceg2oqtc"]
+
+[ext_resource type="Shader" path="res://UI/CRT.gdshader" id="1_kplev"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wy4ex"]
+shader = ExtResource("1_kplev")
+shader_parameter/crt_curve = 0.05
+shader_parameter/crt_scan_line_color = 0.413
+shader_parameter/aperture_grille_rate = 0.9
+shader_parameter/rf_switch_esque_blur = 1.0
+shader_parameter/white_noise_rate = 0.0
+
+[node name="Filter" type="CanvasLayer"]
+
+[node name="CRT effect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_wy4ex")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

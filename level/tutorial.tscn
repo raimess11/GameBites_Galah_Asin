@@ -1,10 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://c1rpx63thc8a6"]
+[gd_scene load_steps=12 format=3 uid="uid://c41gumybx05wx"]
 
-[ext_resource type="Script" path="res://world.gd" id="1_5jjpe"]
-[ext_resource type="PackedScene" uid="uid://bw7gwtjnheca7" path="res://Player/player.tscn" id="1_iuhso"]
-[ext_resource type="PackedScene" uid="uid://dbid8lyw3slh" path="res://UI.tscn" id="4_5v3jc"]
-[ext_resource type="PackedScene" uid="uid://b35pjcl76pioy" path="res://enemy/enemy_path.tscn" id="5_nccua"]
-[ext_resource type="Texture2D" uid="uid://c7wow3ktdn5s4" path="res://assets/block.png" id="6_21puo"]
+[ext_resource type="Script" path="res://level/level.gd" id="1_ldayh"]
+[ext_resource type="PackedScene" uid="uid://bw7gwtjnheca7" path="res://Player/player.tscn" id="2_cx083"]
+[ext_resource type="PackedScene" uid="uid://dbid8lyw3slh" path="res://UI/UI.tscn" id="3_xrjik"]
+[ext_resource type="Texture2D" uid="uid://c7wow3ktdn5s4" path="res://assets/block.png" id="4_rydbn"]
+[ext_resource type="PackedScene" uid="uid://b35pjcl76pioy" path="res://enemy/enemy_path.tscn" id="5_qaiux"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cgnxv"]
 size = Vector2(1, 1200)
@@ -13,7 +13,7 @@ size = Vector2(1, 1200)
 size = Vector2(600, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_glpcr"]
-texture = ExtResource("6_21puo")
+texture = ExtResource("4_rydbn")
 texture_region_size = Vector2i(44, 43)
 0:0/next_alternative_id = 2
 0:0/0 = 0
@@ -33,49 +33,19 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_23cac"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -275, -264, 0, 0, 0, 0, 275, -38)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_nxnn4"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -275, -311, 0, 0, 0, 0, 275, -274)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_mdsqo"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -275, -160, 0, 0, 0, 0, 275, -160)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_18c1h"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -275, -74, 0, 0, 0, 0, 275, -564)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_pv6yf"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -275, -497, 0, 0, 0, 0, 275, -424)
-}
-point_count = 2
-
-[node name="World" type="Node2D"]
-script = ExtResource("1_5jjpe")
+[node name="Level" type="Node2D"]
+script = ExtResource("1_ldayh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_bottom = 300
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
-[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_iuhso")]
+[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_cx083")]
 position = Vector2(124, 66)
 camera = NodePath("../Camera2D")
 
-[node name="CanvasLayer" parent="." instance=ExtResource("4_5v3jc")]
+[node name="CanvasLayer" parent="." instance=ExtResource("3_xrjik")]
 
 [node name="Barrier" type="StaticBody2D" parent="."]
 collision_layer = 3
@@ -109,22 +79,12 @@ layer_0/tile_data = PackedInt32Array(-131066, 0, 0, -131068, 0, 0, -131070, 0, 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Finish"]
 shape = SubResource("RectangleShape2D_jd646")
 
-[node name="EnemyPath" parent="." instance=ExtResource("5_nccua")]
+[node name="EnemyPath2" parent="." instance=ExtResource("5_qaiux")]
+position = Vector2(0, -300)
 curve = SubResource("Curve2D_w0nis")
 
-[node name="EnemyPath2" parent="." instance=ExtResource("5_nccua")]
-curve = SubResource("Curve2D_23cac")
-
-[node name="EnemyPath3" parent="." instance=ExtResource("5_nccua")]
-curve = SubResource("Curve2D_nxnn4")
-
-[node name="EnemyPath4" parent="." instance=ExtResource("5_nccua")]
-curve = SubResource("Curve2D_mdsqo")
-
-[node name="EnemyPath5" parent="." instance=ExtResource("5_nccua")]
-curve = SubResource("Curve2D_18c1h")
-
-[node name="EnemyPath6" parent="." instance=ExtResource("5_nccua")]
-curve = SubResource("Curve2D_pv6yf")
+[node name="EnemyPath" parent="." instance=ExtResource("5_qaiux")]
+curve = SubResource("Curve2D_w0nis")
+speed = 0.005
 
 [connection signal="body_entered" from="Finish" to="." method="_on_finish_body_entered"]

@@ -11,8 +11,8 @@ func _physics_process(delta):
 	progress_ratio = move_toward(progress_ratio, target, get_parent().speed)
 
 func target(player: Player):
-	var playerPositionX = player.position.x + 275
-	var ppxPercent = playerPositionX / (275+275)
+	var playerPositionX = player.position.x + get_parent().curve.get_baked_length()/2
+	var ppxPercent = playerPositionX / get_parent().curve.get_baked_length()
 	return clamp(ppxPercent, 0, 1)
 	
 	

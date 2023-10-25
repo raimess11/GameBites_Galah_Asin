@@ -1,20 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbid8lyw3slh"]
+[gd_scene load_steps=5 format=3 uid="uid://dbid8lyw3slh"]
 
-[ext_resource type="Script" path="res://UI.gd" id="1_ka0qo"]
+[ext_resource type="Script" path="res://UI/UI.gd" id="1_ka0qo"]
 [ext_resource type="FontFile" uid="uid://5m7h3ijqm4ei" path="res://assets/ARCADE_N.TTF" id="1_vlnyr"]
 [ext_resource type="Texture2D" uid="uid://mukyqm1nn0n2" path="res://assets/stanima bar.png" id="2_refxl"]
-[ext_resource type="Shader" path="res://CRT.gdshader" id="3_6uctm"]
-[ext_resource type="Script" path="res://StaminaBar.gd" id="3_r3tei"]
+[ext_resource type="Script" path="res://UI/StaminaBar.gd" id="3_r3tei"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_80gwa"]
-shader = ExtResource("3_6uctm")
-shader_parameter/crt_curve = 0.05
-shader_parameter/crt_scan_line_color = 0.2
-shader_parameter/aperture_grille_rate = 0.9
-shader_parameter/rf_switch_esque_blur = 1.0
-shader_parameter/white_noise_rate = 0.0
-
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="UI" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_ka0qo")
 
@@ -155,15 +146,6 @@ pivot_offset = Vector2(0, 48)
 value = 100.0
 texture_progress = ExtResource("2_refxl")
 script = ExtResource("3_r3tei")
-
-[node name="CRT effect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_80gwa")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
 
 [connection signal="pressed" from="Win/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Win/Quit" to="." method="_on_quit_pressed"]
