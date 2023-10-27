@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c41gumybx05wx"]
+[gd_scene load_steps=13 format=3 uid="uid://c41gumybx05wx"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_ldayh"]
 [ext_resource type="PackedScene" uid="uid://bw7gwtjnheca7" path="res://Player/player.tscn" id="2_cx083"]
@@ -29,7 +29,13 @@ size = Vector2(600, 150)
 
 [sub_resource type="Curve2D" id="Curve2D_w0nis"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -275, -1, 0, 0, 0, 0, 275, -2)
+"points": PackedVector2Array(0, 0, 0, 0, -275, 0, 0, 0, 0, 0, 200, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_aphb0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -275, 0, 0, 0, 0, 0, 275, 0)
 }
 point_count = 2
 
@@ -82,9 +88,11 @@ shape = SubResource("RectangleShape2D_jd646")
 [node name="EnemyPath2" parent="." instance=ExtResource("5_qaiux")]
 position = Vector2(0, -300)
 curve = SubResource("Curve2D_w0nis")
+follow_barrier = 150
 
 [node name="EnemyPath" parent="." instance=ExtResource("5_qaiux")]
-curve = SubResource("Curve2D_w0nis")
+curve = SubResource("Curve2D_aphb0")
 speed = 0.005
+follow_barrier = 150
 
 [connection signal="body_entered" from="Finish" to="." method="_on_finish_body_entered"]
