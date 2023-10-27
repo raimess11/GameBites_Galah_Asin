@@ -1,5 +1,7 @@
 extends PathFollow2D
 
+var test
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -22,6 +24,7 @@ func target(player: Player):
 		long = get_parent().max_width - get_parent().min_width
 		playerPosition = player.position.x - abs(get_parent().min_width)
 		ppPercent = playerPosition / long
+	test = ppPercent
 	return clamp(ppPercent, 0, 1)
 	
 	

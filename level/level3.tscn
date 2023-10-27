@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bw7gwtjnheca7" path="res://Player/player.tscn" id="2_gbbs6"]
 [ext_resource type="PackedScene" uid="uid://dbid8lyw3slh" path="res://UI/UI.tscn" id="3_aboel"]
 [ext_resource type="Texture2D" uid="uid://c7wow3ktdn5s4" path="res://assets/block.png" id="4_4wsae"]
-[ext_resource type="PackedScene" uid="uid://llnwgy1urmxc" path="res://Menu/main_menu.tscn" id="4_ai61a"]
+[ext_resource type="PackedScene" uid="uid://d30mht2s3yv4q" path="res://level/level4.tscn" id="4_e7ijj"]
 [ext_resource type="PackedScene" uid="uid://b35pjcl76pioy" path="res://enemy/enemy_path.tscn" id="5_px06q"]
 [ext_resource type="PackedScene" uid="uid://2u0iceg2oqtc" path="res://UI/Filter.tscn" id="6_e07ns"]
 
@@ -55,7 +55,7 @@ position = Vector2(423, -234)
 camera = NodePath("../Camera2D")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("3_aboel")]
-nextLevel = ExtResource("4_ai61a")
+nextLevel = ExtResource("4_e7ijj")
 
 [node name="Barrier" type="StaticBody2D" parent="."]
 position = Vector2(299, -300)

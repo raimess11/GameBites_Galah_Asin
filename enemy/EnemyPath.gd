@@ -3,6 +3,7 @@ extends Path2D
 @export var player: Player
 @export var follow_barrier = 250
 @export var vertical = false
+@export var vertical_barrier = false
 
 @onready var PathFollow = $PathFollow2D
 
@@ -22,10 +23,17 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if player.position.y < (min_height - follow_barrier) or player.position.y > (max_height + follow_barrier):
-		PathFollow.set_physics_process(false)
+	if !vertical_barrier:
+		if (player.position.y < (min_height - follow_barrier) or player.position.y > (max_height + follow_barrier)):
+			PathFollow.set_physics_process(false)
+		else:
+			PathFollow.set_physics_process(true)
 	else:
-		PathFollow.set_physics_process(true)
+		if (player.position.x < (min_width - follow_barrier) or player.position.x > (max_width + follow_barrier)):
+			PathFollow.set_physics_process(false)
+		else:
+			PathFollow.set_physics_process(true)
+		
 
 func countMaxandMin():
 	var max_height = 0
