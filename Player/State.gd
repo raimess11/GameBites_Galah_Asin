@@ -22,5 +22,3 @@ func _physics_process(delta):
 	elif Input.is_action_pressed("leftMouse") && !Input.is_action_pressed("rightMouse"):
 		player.target = player.get_global_mouse_position()
 		player.velocity = player.position.direction_to(player.target) * player.speed
-		
-	
