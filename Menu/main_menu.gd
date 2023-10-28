@@ -12,7 +12,7 @@ func _process(delta):
 
 
 func _on_start_pressed():
-	
+	pass
 
 
 func _on_option_pressed():

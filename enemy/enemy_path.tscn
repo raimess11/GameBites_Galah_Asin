@@ -10,7 +10,6 @@ script = ExtResource("1_frwvd")
 [node name="Enemy" parent="." instance=ExtResource("2_luarq")]
 position = Vector2(-275, 0)
 rotation = -0.179853
-scale = Vector2(1, 1)
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 position = Vector2(-275, 0)
