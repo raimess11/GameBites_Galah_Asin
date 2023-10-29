@@ -7,6 +7,8 @@ class_name Player
 @onready var player_normal_state = $FiniteStateMachine/PlayerNormalState as PlayerNormalState
 @onready var player_taunt_state = $FiniteStateMachine/PlayerTauntState as PlayerTauntState
 @onready var player_run_state = $FiniteStateMachine/PlayerRunState as PlayerRunState
+@onready var animation_player = $AnimationPlayer
+
 
 var target = position
 var run = false
@@ -20,3 +22,4 @@ func _ready():
 
 func _physics_process(delta):
 	camera.position.y = self.position.y
+	
