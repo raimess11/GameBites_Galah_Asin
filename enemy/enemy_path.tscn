@@ -8,12 +8,8 @@
 script = ExtResource("1_frwvd")
 
 [node name="Enemy" parent="." instance=ExtResource("2_luarq")]
-position = Vector2(-275, 0)
-rotation = -0.179853
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2(-275, 0)
-rotation = -0.179853
 script = ExtResource("3_xtiqp")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]

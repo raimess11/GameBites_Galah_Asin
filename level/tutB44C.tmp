@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c41gumybx05wx"]
+[gd_scene load_steps=12 format=3 uid="uid://c41gumybx05wx"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_ldayh"]
 [ext_resource type="PackedScene" uid="uid://bw7gwtjnheca7" path="res://Player/player.tscn" id="2_cx083"]
 [ext_resource type="PackedScene" uid="uid://dbid8lyw3slh" path="res://UI/UI.tscn" id="3_xrjik"]
 [ext_resource type="Texture2D" uid="uid://c7wow3ktdn5s4" path="res://assets/block.png" id="4_rydbn"]
+[ext_resource type="PackedScene" uid="uid://b35pjcl76pioy" path="res://enemy/enemy_path.tscn" id="5_qaiux"]
 [ext_resource type="PackedScene" uid="uid://cnrmlintqyfbb" path="res://level/tile_map.tscn" id="6_0e583"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_glpcr"]
@@ -20,6 +21,18 @@ sources/0 = SubResource("TileSetAtlasSource_glpcr")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jd646"]
 size = Vector2(600, 150)
+
+[sub_resource type="Curve2D" id="Curve2D_w0nis"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -275, 0, 0, 0, 0, 0, 200, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_aphb0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -275, 0, 0, 0, 0, 0, 275, 0)
+}
+point_count = 2
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_ldayh")
@@ -47,5 +60,15 @@ layer_0/tile_data = PackedInt32Array(-131066, 0, 0, -131068, 0, 0, -131070, 0, 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Finish"]
 shape = SubResource("RectangleShape2D_jd646")
+
+[node name="EnemyPath2" parent="." instance=ExtResource("5_qaiux")]
+position = Vector2(0, -300)
+curve = SubResource("Curve2D_w0nis")
+follow_barrier = 150
+
+[node name="EnemyPath" parent="." instance=ExtResource("5_qaiux")]
+curve = SubResource("Curve2D_aphb0")
+speed = 0.005
+follow_barrier = 150
 
 [connection signal="body_entered" from="Finish" to="." method="_on_finish_body_entered"]

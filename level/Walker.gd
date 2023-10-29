@@ -8,12 +8,14 @@ var direction = Vector2.RIGHT
 var border = Rect2()
 var step_history = []
 var step_since_return = 0
+var main_path = []
 
 func _init(starting_position, new_border):
 	assert(new_border.has_point(starting_position))
 	position = starting_position
 	step_history.append(position)
 	border = new_border
+	main_path.append(position)
 
 func walk(steps):
 	create_room(position)
@@ -21,10 +23,14 @@ func walk(steps):
 		if step_since_return >= 5:
 			change_direction()
 		if step():
-			step_history.append(position)
+			create_room(position, Vector2.ONE * 10)
+			main_path.append(position)
 		else:
 			change_direction()
 	return step_history
+
+func get_main_path():
+	return main_path
 
 func step():
 	var target_position = position + direction
@@ -45,8 +51,8 @@ func change_direction():
 	while not border.has_point(position + direction):
 		direction = directions.pop_front()
 
-func create_room(position):
-	var size = Vector2(randi() % 2 + 2, randi() % 2 + 2)
+func create_room(position, dimention:Vector2 = Vector2(5,5)):
+	var size = Vector2(randi() % int(dimention.x) + 1, randi() % int(dimention.y) + 1)
 	var top_left_corner = (position - size/2).ceil()
 	for y in size.y:
 		for x in size.x:

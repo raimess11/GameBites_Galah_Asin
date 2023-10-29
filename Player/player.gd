@@ -18,5 +18,3 @@ func _ready():
 	player_taunt_state.player_run.connect(finite_state_machine.change_state.bind(player_run_state))
 	player_run_state.player_normal.connect(finite_state_machine.change_state.bind(player_normal_state))
 
-func _physics_process(delta):
-	camera.position.y = self.position.y

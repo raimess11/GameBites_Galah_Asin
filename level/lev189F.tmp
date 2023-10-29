@@ -1,9 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://bjgbbi6jr2t5j"]
 
 [ext_resource type="Script" path="res://level/level_generator.gd" id="1_02iex"]
-[ext_resource type="PackedScene" uid="uid://cnrmlintqyfbb" path="res://level/tile_map.tscn" id="2_706xb"]
+[ext_resource type="TileSet" uid="uid://dpu0d3ou263ai" path="res://level/Default_tile.tres" id="2_e1w7a"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_02iex")
 
-[node name="TileMap" parent="." instance=ExtResource("2_706xb")]
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_e1w7a")
+format = 2
