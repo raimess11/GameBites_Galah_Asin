@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmg63mhm1vkth"]
+
+[ext_resource type="Texture2D" uid="uid://eei4y1tod3m4" path="res://Untitled_Artwork.png" id="1_6tidj"]
+[ext_resource type="PackedScene" uid="uid://c1rpx63thc8a6" path="res://level/level1.tscn" id="1_fjise"]
+
+[node name="Main" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -428.0
+offset_top = -645.0
+offset_right = 5.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("1_6tidj")
+
+[node name="Level1" parent="." instance=ExtResource("1_fjise")]

@@ -22,9 +22,10 @@ GlobalSound="*res://BGM_SFX/GlobalSound.tscn"
 
 [display]
 
-window/size/viewport_width=600
-window/size/viewport_height=600
+window/size/viewport_width=426
+window/size/viewport_height=640
 window/stretch/mode="canvas_items"
+window/stretch/scale=0.5
 
 [input]
 
