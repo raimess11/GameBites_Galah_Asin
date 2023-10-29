@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 StaminaTimer="*res://Player/StaminaTimer.tscn"
+GlobalSound="*res://BGM_SFX/GlobalSound.tscn"
 
 [display]
 
