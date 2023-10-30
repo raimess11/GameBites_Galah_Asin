@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://2u0iceg2oqtc"]
+[gd_scene load_steps=4 format=3 uid="uid://2u0iceg2oqtc"]
 
 [ext_resource type="Shader" path="res://UI/CRT.gdshader" id="1_kplev"]
+[ext_resource type="Texture2D" uid="uid://eei4y1tod3m4" path="res://Untitled_Artwork.png" id="2_2tp2a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wy4ex"]
 shader = ExtResource("1_kplev")
@@ -11,15 +12,26 @@ shader_parameter/rf_switch_esque_blur = 1.0
 shader_parameter/white_noise_rate = 0.0
 
 [node name="Filter" type="CanvasLayer"]
+
+[node name="Effect" type="CanvasLayer" parent="."]
 scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 0, 0)
 
-[node name="CRT effect" type="ColorRect" parent="."]
+[node name="CRT effect" type="ColorRect" parent="Effect"]
 material = SubResource("ShaderMaterial_wy4ex")
 offset_left = 55.0
-offset_top = 160.0
+offset_top = 165.0
 offset_right = 375.0
-offset_bottom = 480.0
+offset_bottom = 485.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
+
+[node name="Arcade" type="CanvasLayer" parent="."]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Arcade"]
+offset_right = 433.0
+offset_bottom = 649.0
+texture = ExtResource("2_2tp2a")
