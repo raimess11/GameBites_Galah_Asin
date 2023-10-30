@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://2u0iceg2oqtc"]
+[gd_scene load_steps=17 format=3 uid="uid://2u0iceg2oqtc"]
 
+[ext_resource type="Texture2D" uid="uid://c5y2ymjds3hvb" path="res://buttons.png" id="1_7pjkf"]
 [ext_resource type="Shader" path="res://UI/CRT.gdshader" id="1_kplev"]
 [ext_resource type="Texture2D" uid="uid://eei4y1tod3m4" path="res://Untitled_Artwork.png" id="2_2tp2a"]
 
@@ -10,6 +11,93 @@ shader_parameter/crt_scan_line_color = 0.413
 shader_parameter/aperture_grille_rate = 0.9
 shader_parameter/rf_switch_esque_blur = 1.0
 shader_parameter/white_noise_rate = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oun40"]
+atlas = ExtResource("1_7pjkf")
+region = Rect2(0, 0, 274, 576)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fyc0"]
+atlas = ExtResource("1_7pjkf")
+region = Rect2(274, 0, 274, 576)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3k26b"]
+atlas = ExtResource("1_7pjkf")
+region = Rect2(548, 0, 274, 576)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72j18"]
+atlas = ExtResource("1_7pjkf")
+region = Rect2(825, 0, 355, 576)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chbis"]
+atlas = ExtResource("1_7pjkf")
+region = Rect2(1180, 0, 355, 576)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i2l4m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oun40")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4fyc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3k26b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72j18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chbis")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkqgb"]
+atlas = ExtResource("1_7pjkf")
+region = Rect2(0, 576, 274, 288)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydyfn"]
+atlas = ExtResource("1_7pjkf")
+region = Rect2(274, 576, 274, 288)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3y2rq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkqgb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydyfn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtquk"]
+atlas = ExtResource("1_7pjkf")
+region = Rect2(0, 576, 274, 288)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4s38"]
+atlas = ExtResource("1_7pjkf")
+region = Rect2(274, 576, 274, 288)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3k6jl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtquk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4s38")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Filter" type="CanvasLayer"]
 
@@ -35,3 +123,19 @@ transform = Transform2D(2, 0, 0, 2, 0, 0)
 offset_right = 433.0
 offset_bottom = 649.0
 texture = ExtResource("2_2tp2a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Arcade"]
+position = Vector2(103.5, 558)
+scale = Vector2(0.312422, 0.312422)
+sprite_frames = SubResource("SpriteFrames_i2l4m")
+frame = 2
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Arcade"]
+position = Vector2(266, 588.5)
+scale = Vector2(0.316938, 0.316938)
+sprite_frames = SubResource("SpriteFrames_3y2rq")
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Arcade"]
+position = Vector2(358, 584.5)
+scale = Vector2(0.231764, 0.231764)
+sprite_frames = SubResource("SpriteFrames_3k6jl")

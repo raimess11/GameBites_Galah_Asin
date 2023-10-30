@@ -6,6 +6,7 @@ signal player_taunt
 func _physics_process(delta):
 	
 	player.input_direction = Input.get_vector("left", "right", "up", "down")
+	print(player.input_direction)
 	super._physics_process(delta)
 	if player.input_direction != Vector2.ZERO:
 		player.collision = player.move_and_collide(player.velocity * delta)

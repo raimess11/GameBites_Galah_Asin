@@ -66,10 +66,6 @@ position_smoothing_speed = 10.0
 position = Vector2(423, -232)
 camera = NodePath("../Camera2D")
 
-[node name="CanvasLayer" parent="." instance=ExtResource("3_8en3s")]
-layer = 2
-nextLevel = ExtResource("4_30sp3")
-
 [node name="Barrier" type="StaticBody2D" parent="."]
 position = Vector2(299, -298)
 collision_layer = 3
@@ -118,6 +114,20 @@ follow_barrier = 0
 vertical = true
 speed = 1.0
 
-[node name="Filter" parent="." instance=ExtResource("6_aixq6")]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
+[node name="Filter" parent="Control" instance=ExtResource("6_aixq6")]
+layer = 0
+
+[node name="CanvasLayer" parent="Control" instance=ExtResource("3_8en3s")]
+nextLevel = ExtResource("4_30sp3")
+
+[connection signal="do_input" from="Player" to="." method="_on_player_do_input"]
 [connection signal="body_entered" from="Finish" to="." method="_on_finish_body_entered"]
+
+[editable path="Control/Filter"]
+[editable path="Control/CanvasLayer"]

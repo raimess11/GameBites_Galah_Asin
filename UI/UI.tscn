@@ -154,6 +154,7 @@ value = 100.0
 texture_progress = ExtResource("2_refxl")
 script = ExtResource("3_r3tei")
 
+[connection signal="mouse_entered" from="Win/Continue" to="." method="_on_continue_mouse_entered"]
 [connection signal="pressed" from="Win/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Win/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Lose/Restart" to="." method="_on_restart_pressed"]

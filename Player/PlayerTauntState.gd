@@ -7,6 +7,7 @@ signal player_run
 
 func _physics_process(delta):
 	player.input_direction = Input.get_vector("left", "right", "up", "down")
+	print(player.input_direction)
 	super._physics_process(delta)
 	if player.input_direction != Vector2.ZERO:
 		player.animation_player.play("Move",-1,0.5)

@@ -11,6 +11,7 @@ func _enter_state():
 
 func _physics_process(delta):
 	player.input_direction = Input.get_vector("left", "right", "up", "down")
+	print(player.input_direction)
 	super._physics_process(delta)
 	player.velocity = player.velocity * runSpeed
 	if StaminaTimer.is_stopped():

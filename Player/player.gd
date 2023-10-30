@@ -15,6 +15,8 @@ var run = false
 var collision
 var input_direction = Vector2.ZERO
 
+signal do_input(input:Vector2)
+
 func _ready():
 	player_normal_state.player_taunt.connect(finite_state_machine.change_state.bind(player_taunt_state))
 	player_taunt_state.player_run.connect(finite_state_machine.change_state.bind(player_run_state))
