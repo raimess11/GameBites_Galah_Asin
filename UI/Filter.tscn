@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://2u0iceg2oqtc"]
+[gd_scene load_steps=18 format=3 uid="uid://2u0iceg2oqtc"]
 
 [ext_resource type="Texture2D" uid="uid://c5y2ymjds3hvb" path="res://buttons.png" id="1_7pjkf"]
 [ext_resource type="Shader" path="res://UI/CRT.gdshader" id="1_kplev"]
+[ext_resource type="Script" path="res://UI/Filter.gd" id="1_tslpt"]
 [ext_resource type="Texture2D" uid="uid://eei4y1tod3m4" path="res://Untitled_Artwork.png" id="2_2tp2a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wy4ex"]
@@ -100,6 +101,7 @@ animations = [{
 }]
 
 [node name="Filter" type="CanvasLayer"]
+script = ExtResource("1_tslpt")
 
 [node name="Effect" type="CanvasLayer" parent="."]
 scale = Vector2(2, 2)
@@ -122,6 +124,7 @@ transform = Transform2D(2, 0, 0, 2, 0, 0)
 [node name="TextureRect" type="TextureRect" parent="Arcade"]
 offset_right = 433.0
 offset_bottom = 649.0
+mouse_filter = 2
 texture = ExtResource("2_2tp2a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Arcade"]

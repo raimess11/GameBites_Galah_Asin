@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://fnm73jtevb6u"]
+[gd_scene load_steps=14 format=3 uid="uid://fnm73jtevb6u"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_lt0ht"]
 [ext_resource type="PackedScene" uid="uid://bw7gwtjnheca7" path="res://Player/player.tscn" id="2_o8xvh"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://llnwgy1urmxc" path="res://Menu/main_menu.tscn" id="4_1uux6"]
 [ext_resource type="Texture2D" uid="uid://c7wow3ktdn5s4" path="res://assets/block.png" id="5_8r3dk"]
 [ext_resource type="PackedScene" uid="uid://b35pjcl76pioy" path="res://enemy/enemy_path.tscn" id="6_1vmfa"]
-[ext_resource type="PackedScene" uid="uid://2u0iceg2oqtc" path="res://UI/Filter.tscn" id="7_e4hxr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4xc1j"]
 size = Vector2(1, 1800)
@@ -46,7 +45,7 @@ script = ExtResource("1_lt0ht")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(299, -300)
-limit_bottom = 0
+limit_bottom = 300
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
@@ -90,14 +89,16 @@ shape = SubResource("RectangleShape2D_2toeb")
 position = Vector2(24, -320)
 curve = SubResource("Curve2D_fdywe")
 
+[node name="EnemyPathX4" parent="." instance=ExtResource("6_1vmfa")]
+position = Vector2(24, -820)
+curve = SubResource("Curve2D_fdywe")
+
 [node name="EnemyPathX2" parent="." instance=ExtResource("6_1vmfa")]
 position = Vector2(24, -320)
 curve = SubResource("Curve2D_q1tpd")
 
 [node name="EnemyPathX3" parent="." instance=ExtResource("6_1vmfa")]
-position = Vector2(24, -320)
+position = Vector2(24, -820)
 curve = SubResource("Curve2D_q1tpd")
-
-[node name="Filter" parent="." instance=ExtResource("7_e4hxr")]
 
 [connection signal="body_entered" from="Finish" to="." method="_on_finish_body_entered"]

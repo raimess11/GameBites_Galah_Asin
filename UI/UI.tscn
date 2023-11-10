@@ -1,20 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbid8lyw3slh"]
+[gd_scene load_steps=5 format=3 uid="uid://dbid8lyw3slh"]
 
 [ext_resource type="Script" path="res://UI/UI.gd" id="1_ka0qo"]
 [ext_resource type="FontFile" uid="uid://5m7h3ijqm4ei" path="res://assets/ARCADE_N.TTF" id="1_vlnyr"]
 [ext_resource type="Texture2D" uid="uid://mukyqm1nn0n2" path="res://assets/stanima bar.png" id="2_refxl"]
 [ext_resource type="Script" path="res://UI/StaminaBar.gd" id="3_r3tei"]
-[ext_resource type="Texture2D" uid="uid://eei4y1tod3m4" path="res://Untitled_Artwork.png" id="5_uqtjf"]
 
 [node name="UI" type="CanvasLayer"]
 process_mode = 3
 layer = 0
 script = ExtResource("1_ka0qo")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 866.0
-offset_bottom = 1298.0
-texture = ExtResource("5_uqtjf")
 
 [node name="Win" type="Control" parent="."]
 process_mode = 3

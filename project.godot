@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 StaminaTimer="*res://Player/StaminaTimer.tscn"
 GlobalSound="*res://BGM_SFX/GlobalSound.tscn"
+Filter="*res://UI/Filter.tscn"
 
 [display]
 

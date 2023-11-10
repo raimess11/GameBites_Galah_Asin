@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d30mht2s3yv4q"]
+[gd_scene load_steps=15 format=3 uid="uid://d30mht2s3yv4q"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_ix35a"]
 [ext_resource type="PackedScene" uid="uid://bw7gwtjnheca7" path="res://Player/player.tscn" id="2_dqauq"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://c7wow3ktdn5s4" path="res://assets/block.png" id="4_5sn6u"]
 [ext_resource type="PackedScene" uid="uid://ylb0nj5qdkc1" path="res://level/level5.tscn" id="4_pcbyx"]
 [ext_resource type="PackedScene" uid="uid://b35pjcl76pioy" path="res://enemy/enemy_path.tscn" id="5_1i3mw"]
-[ext_resource type="PackedScene" uid="uid://2u0iceg2oqtc" path="res://UI/Filter.tscn" id="6_xf2p5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqhfl"]
 size = Vector2(1, 1200)
@@ -264,7 +263,5 @@ follow_barrier = 50
 vertical = true
 vertical_barrier = true
 speed = 0.005
-
-[node name="Filter" parent="." instance=ExtResource("6_xf2p5")]
 
 [connection signal="body_entered" from="Finish" to="." method="_on_finish_body_entered"]

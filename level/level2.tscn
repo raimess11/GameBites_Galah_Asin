@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ukgwu026qogk"]
+[gd_scene load_steps=16 format=3 uid="uid://ukgwu026qogk"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_t143u"]
 [ext_resource type="PackedScene" uid="uid://bw7gwtjnheca7" path="res://Player/player.tscn" id="2_iyf2a"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://c7wow3ktdn5s4" path="res://assets/block.png" id="4_6v40d"]
 [ext_resource type="PackedScene" uid="uid://dhi4frusux1t" path="res://level/level3.tscn" id="4_53ckr"]
 [ext_resource type="PackedScene" uid="uid://b35pjcl76pioy" path="res://enemy/enemy_path.tscn" id="5_6vd4t"]
-[ext_resource type="PackedScene" uid="uid://2u0iceg2oqtc" path="res://UI/Filter.tscn" id="7_e6jwu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4xc1j"]
 size = Vector2(1, 1800)
@@ -58,7 +57,7 @@ script = ExtResource("1_t143u")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(299, -300)
-limit_bottom = 0
+limit_bottom = 300
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
@@ -70,7 +69,7 @@ camera = NodePath("../Camera2D")
 nextLevel = ExtResource("4_53ckr")
 
 [node name="Barrier" type="StaticBody2D" parent="."]
-position = Vector2(299, -300)
+position = Vector2(299, -400)
 collision_layer = 3
 collision_mask = 3
 
@@ -88,7 +87,7 @@ shape = SubResource("RectangleShape2D_2hjoi")
 
 [node name="Finish" type="Area2D" parent="."]
 z_index = -1
-position = Vector2(299, -1400)
+position = Vector2(299, -1500)
 
 [node name="TileMap" type="TileMap" parent="Finish"]
 tile_set = SubResource("TileSet_4vns2")
@@ -99,26 +98,24 @@ layer_0/tile_data = PackedInt32Array(-131066, 0, 0, -131068, 0, 0, -131070, 0, 0
 shape = SubResource("RectangleShape2D_2toeb")
 
 [node name="EnemyPath2" parent="." instance=ExtResource("5_6vd4t")]
-position = Vector2(299, -800)
+position = Vector2(299, -900)
 curve = SubResource("Curve2D_mdsqo")
 speed = 1.0
 
 [node name="EnemyPath4" parent="." instance=ExtResource("5_6vd4t")]
-position = Vector2(299, -1000)
+position = Vector2(299, -1100)
 curve = SubResource("Curve2D_v1kmw")
 speed = 1.0
 
 [node name="EnemyPathY" parent="." instance=ExtResource("5_6vd4t")]
-position = Vector2(299, -1300)
+position = Vector2(299, -1400)
 curve = SubResource("Curve2D_1vvu0")
 follow_barrier = 0
 vertical = true
 speed = 0.005
 
 [node name="EnemyPath" parent="." instance=ExtResource("5_6vd4t")]
-position = Vector2(299, -300)
+position = Vector2(299, -400)
 curve = SubResource("Curve2D_r2fbj")
-
-[node name="Filter" parent="." instance=ExtResource("7_e6jwu")]
 
 [connection signal="body_entered" from="Finish" to="." method="_on_finish_body_entered"]

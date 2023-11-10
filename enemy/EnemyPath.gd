@@ -19,6 +19,14 @@ func _ready():
 	min_height = countMaxandMin()[1] + position.y
 	max_width = countMaxandMin()[2] + position.x
 	min_width = countMaxandMin()[3] + position.x
+	var l := Line2D.new()   
+	l.default_color = Color(1,1,1,1)  
+	l.width = 20  
+	for point in self.curve.get_baked_points():  
+		l.add_point(point)
+	l.width = 5.0
+	l.z_index = -1
+	add_child(l)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

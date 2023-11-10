@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c1rpx63thc8a6"]
+[gd_scene load_steps=16 format=3 uid="uid://c1rpx63thc8a6"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_amnri"]
 [ext_resource type="PackedScene" uid="uid://bw7gwtjnheca7" path="res://Player/player.tscn" id="2_8aa8v"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://ukgwu026qogk" path="res://level/level2.tscn" id="4_30sp3"]
 [ext_resource type="Texture2D" uid="uid://c7wow3ktdn5s4" path="res://assets/block.png" id="4_pnd3o"]
 [ext_resource type="PackedScene" uid="uid://b35pjcl76pioy" path="res://enemy/enemy_path.tscn" id="5_0gfg5"]
-[ext_resource type="PackedScene" uid="uid://2u0iceg2oqtc" path="res://UI/Filter.tscn" id="6_aixq6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cgnxv"]
 size = Vector2(1, 1200)
@@ -58,6 +57,7 @@ script = ExtResource("1_amnri")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(299, -298)
+rotation = -1.309
 limit_bottom = 300
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
@@ -114,20 +114,8 @@ follow_barrier = 0
 vertical = true
 speed = 1.0
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Filter" parent="Control" instance=ExtResource("6_aixq6")]
-layer = 0
-
-[node name="CanvasLayer" parent="Control" instance=ExtResource("3_8en3s")]
+[node name="CanvasLayer" parent="." instance=ExtResource("3_8en3s")]
 nextLevel = ExtResource("4_30sp3")
 
 [connection signal="do_input" from="Player" to="." method="_on_player_do_input"]
 [connection signal="body_entered" from="Finish" to="." method="_on_finish_body_entered"]
-
-[editable path="Control/Filter"]
-[editable path="Control/CanvasLayer"]

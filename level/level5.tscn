@@ -1,12 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://ylb0nj5qdkc1"]
+[gd_scene load_steps=20 format=3 uid="uid://ylb0nj5qdkc1"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_mwm3j"]
 [ext_resource type="PackedScene" uid="uid://bw7gwtjnheca7" path="res://Player/player.tscn" id="2_rylht"]
 [ext_resource type="PackedScene" uid="uid://dbid8lyw3slh" path="res://UI/UI.tscn" id="3_8r2av"]
 [ext_resource type="Texture2D" uid="uid://c7wow3ktdn5s4" path="res://assets/block.png" id="4_dqhql"]
-[ext_resource type="PackedScene" uid="uid://llnwgy1urmxc" path="res://Menu/main_menu.tscn" id="4_g0cq4"]
+[ext_resource type="PackedScene" uid="uid://carve5banhhxq" path="res://Menu/congratulation.tscn" id="4_e5kxx"]
 [ext_resource type="PackedScene" uid="uid://b35pjcl76pioy" path="res://enemy/enemy_path.tscn" id="5_bodpd"]
-[ext_resource type="PackedScene" uid="uid://2u0iceg2oqtc" path="res://UI/Filter.tscn" id="6_gp51s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4xc1j"]
 size = Vector2(1, 1800)
@@ -28,18 +27,6 @@ sources/0 = SubResource("TileSetAtlasSource_1rlr2")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2toeb"]
 size = Vector2(600, 150)
-
-[sub_resource type="Curve2D" id="Curve2D_wqhqy"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 550, 250, 0, 0, 0, 0, 0, 200, 0, 0, 0, 0, 550, 150, 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 550, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 550, -50, 0, 0, 0, 0, 0, -100, 0, 0, 0, 0, 550, -150, 0, 0, 0, 0, 0, -200, 0, 0, 0, 0, 550, -250, 0, 0, 0, 0, 0, -300, 0, 0, 0, 0, 550, -350, 0, 0, 0, 0, 0, -400, 0, 0, 0, 0, 550, -450, 0, 0, 0, 0, 0, -500, 0, 0, 0, 0, 550, -550, 0, 0, 0, 0, 0, -600, 0, 0, 0, 0, 550, -650, 0, 0, 0, 0, 0, -700, 0, 0, 0, 0, 550, -750)
-}
-point_count = 21
-
-[sub_resource type="Curve2D" id="Curve2D_lv338"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 250, 0, 0, 0, 0, 550, 200, 0, 0, 0, 0, 0, 150, 0, 0, 0, 0, 550, 100, 0, 0, 0, 0, 0, 50, 0, 0, 0, 0, 550, 0, 0, 0, 0, 0, 0, -50, 0, 0, 0, 0, 550, -100, 0, 0, 0, 0, 0, -150, 0, 0, 0, 0, 550, -200, 0, 0, 0, 0, 0, -250, 0, 0, 0, 0, 550, -300, 0, 0, 0, 0, 0, -350, 0, 0, 0, 0, 550, -400, 0, 0, 0, 0, 0, -450, 0, 0, 0, 0, 550, -500, 0, 0, 0, 0, 0, -550, 0, 0, 0, 0, 550, -600, 0, 0, 0, 0, 0, -650, 0, 0, 0, 0, 550, -700, 0, 0, 0, 0, 0, -750)
-}
-point_count = 21
 
 [sub_resource type="Curve2D" id="Curve2D_fdywe"]
 _data = {
@@ -77,12 +64,24 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="Curve2D" id="Curve2D_wqhqy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 550, 250, 0, 0, 0, 0, 0, 200, 0, 0, 0, 0, 550, 150, 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 550, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 550, -50, 0, 0, 0, 0, 0, -100, 0, 0, 0, 0, 550, -150, 0, 0, 0, 0, 0, -200, 0, 0, 0, 0, 550, -250, 0, 0, 0, 0, 0, -300, 0, 0, 0, 0, 550, -350, 0, 0, 0, 0, 0, -400, 0, 0, 0, 0, 550, -450, 0, 0, 0, 0, 0, -500, 0, 0, 0, 0, 550, -550, 0, 0, 0, 0, 0, -600, 0, 0, 0, 0, 550, -650, 0, 0, 0, 0, 0, -700, 0, 0, 0, 0, 550, -750)
+}
+point_count = 21
+
+[sub_resource type="Curve2D" id="Curve2D_lv338"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 250, 0, 0, 0, 0, 550, 200, 0, 0, 0, 0, 0, 150, 0, 0, 0, 0, 550, 100, 0, 0, 0, 0, 0, 50, 0, 0, 0, 0, 550, 0, 0, 0, 0, 0, 0, -50, 0, 0, 0, 0, 550, -100, 0, 0, 0, 0, 0, -150, 0, 0, 0, 0, 550, -200, 0, 0, 0, 0, 0, -250, 0, 0, 0, 0, 550, -300, 0, 0, 0, 0, 0, -350, 0, 0, 0, 0, 550, -400, 0, 0, 0, 0, 0, -450, 0, 0, 0, 0, 550, -500, 0, 0, 0, 0, 0, -550, 0, 0, 0, 0, 550, -600, 0, 0, 0, 0, 0, -650, 0, 0, 0, 0, 550, -700, 0, 0, 0, 0, 0, -750)
+}
+point_count = 21
+
 [node name="Level" type="Node2D"]
 script = ExtResource("1_mwm3j")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(299, -300)
-limit_bottom = 0
+limit_bottom = 300
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
@@ -91,7 +90,7 @@ position = Vector2(423, -234)
 camera = NodePath("../Camera2D")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("3_8r2av")]
-nextLevel = ExtResource("4_g0cq4")
+nextLevel = ExtResource("4_e5kxx")
 
 [node name="Barrier" type="StaticBody2D" parent="."]
 position = Vector2(299, -300)
@@ -121,20 +120,6 @@ layer_0/tile_data = PackedInt32Array(-131066, 0, 0, -131068, 0, 0, -131070, 0, 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Finish"]
 shape = SubResource("RectangleShape2D_2toeb")
-
-[node name="EnemyPathZigZag" parent="." instance=ExtResource("5_bodpd")]
-position = Vector2(25, -550)
-curve = SubResource("Curve2D_wqhqy")
-follow_barrier = 0
-vertical = true
-speed = 0.002
-
-[node name="EnemyPathZigZag2" parent="." instance=ExtResource("5_bodpd")]
-position = Vector2(25, -550)
-curve = SubResource("Curve2D_lv338")
-follow_barrier = 0
-vertical = true
-speed = 0.002
 
 [node name="EnemyPathX" parent="." instance=ExtResource("5_bodpd")]
 position = Vector2(25, -550)
@@ -205,6 +190,18 @@ follow_barrier = 0
 vertical = true
 speed = 1.0
 
-[node name="Filter" parent="." instance=ExtResource("6_gp51s")]
+[node name="EnemyPathZigZag" parent="." instance=ExtResource("5_bodpd")]
+position = Vector2(25, -550)
+curve = SubResource("Curve2D_wqhqy")
+follow_barrier = 0
+vertical = true
+speed = 0.002
+
+[node name="EnemyPathZigZag2" parent="." instance=ExtResource("5_bodpd")]
+position = Vector2(25, -550)
+curve = SubResource("Curve2D_lv338")
+follow_barrier = 0
+vertical = true
+speed = 0.002
 
 [connection signal="body_entered" from="Finish" to="." method="_on_finish_body_entered"]

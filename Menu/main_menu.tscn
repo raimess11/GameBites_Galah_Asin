@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://llnwgy1urmxc"]
+[gd_scene load_steps=7 format=3 uid="uid://llnwgy1urmxc"]
 
 [ext_resource type="Script" path="res://Menu/main_menu.gd" id="1_ji0yj"]
 [ext_resource type="FontFile" uid="uid://5m7h3ijqm4ei" path="res://assets/ARCADE_N.TTF" id="1_kd4n8"]
-[ext_resource type="PackedScene" uid="uid://2u0iceg2oqtc" path="res://UI/Filter.tscn" id="2_ccq5t"]
+[ext_resource type="Script" path="res://Menu/Start.gd" id="3_iqafw"]
+[ext_resource type="Script" path="res://Menu/Option.gd" id="4_ysvye"]
+[ext_resource type="Script" path="res://Menu/CreditsButton.gd" id="5_o84c6"]
+[ext_resource type="Script" path="res://Menu/Quit.gd" id="6_ir5uy"]
 
 [node name="Main Menu" type="Control"]
 texture_filter = 1
@@ -14,7 +17,23 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ji0yj")
 
-[node name="Filter" parent="." instance=ExtResource("2_ccq5t")]
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -57.0
+offset_top = -50.0
+offset_right = 57.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.917647, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_kd4n8")
+theme_override_font_sizes/font_size = 55
+text = "Galah asin"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -30,21 +49,13 @@ offset_bottom = 174.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.917647, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_kd4n8")
-theme_override_font_sizes/font_size = 55
-text = "Galah asin"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Start" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kd4n8")
 theme_override_font_sizes/font_size = 25
 text = "Start"
 flat = true
+script = ExtResource("3_iqafw")
 
 [node name="Option" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -52,6 +63,7 @@ theme_override_fonts/font = ExtResource("1_kd4n8")
 theme_override_font_sizes/font_size = 25
 text = "Option"
 flat = true
+script = ExtResource("4_ysvye")
 
 [node name="Credits" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -59,6 +71,7 @@ theme_override_fonts/font = ExtResource("1_kd4n8")
 theme_override_font_sizes/font_size = 25
 text = "Credits"
 flat = true
+script = ExtResource("5_o84c6")
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -66,16 +79,9 @@ theme_override_fonts/font = ExtResource("1_kd4n8")
 theme_override_font_sizes/font_size = 25
 text = "Quit"
 flat = true
+script = ExtResource("6_ir5uy")
 
-[node name="Title2" type="Label" parent="."]
-layout_mode = 0
-theme_override_colors/font_color = Color(0.917647, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_kd4n8")
-theme_override_font_sizes/font_size = 55
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/Option" to="." method="_on_option_pressed"]
-[connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="VBoxContainer/Start" to="VBoxContainer/Start" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/Option" to="VBoxContainer/Option" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/Credits" to="VBoxContainer/Credits" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="VBoxContainer/Quit" method="_on_pressed"]
