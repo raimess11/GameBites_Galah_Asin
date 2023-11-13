@@ -1,166 +1,123 @@
-[gd_scene load_steps=14 format=3 uid="uid://dhi4frusux1t"]
+[gd_scene load_steps=9 format=3 uid="uid://bm414de3vou1a"]
 
-[ext_resource type="Script" path="res://level/level.gd" id="1_0p4nr"]
-[ext_resource type="PackedScene" uid="uid://bw7gwtjnheca7" path="res://Player/player.tscn" id="2_gbbs6"]
-[ext_resource type="PackedScene" uid="uid://dbid8lyw3slh" path="res://UI/UI.tscn" id="3_aboel"]
-[ext_resource type="Texture2D" uid="uid://c7wow3ktdn5s4" path="res://assets/block.png" id="4_4wsae"]
-[ext_resource type="PackedScene" uid="uid://d30mht2s3yv4q" path="res://level/level4.tscn" id="4_e7ijj"]
+[ext_resource type="PackedScene" uid="uid://c41p0x3pai8lf" path="res://level/level.tscn" id="1_8v5pu"]
 [ext_resource type="PackedScene" uid="uid://b35pjcl76pioy" path="res://enemy/enemy_path.tscn" id="5_px06q"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4xc1j"]
-size = Vector2(1, 1800)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2hjoi"]
-size = Vector2(600, 1)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1rlr2"]
-texture = ExtResource("4_4wsae")
-texture_region_size = Vector2i(44, 43)
-0:0/next_alternative_id = 2
-0:0/0 = 0
-0:0/1 = 1
-0:0/1/modulate = Color(0, 0, 0, 1)
-
-[sub_resource type="TileSet" id="TileSet_4vns2"]
-tile_size = Vector2i(44, 43)
-sources/0 = SubResource("TileSetAtlasSource_1rlr2")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2toeb"]
-size = Vector2(600, 150)
-
-[sub_resource type="Curve2D" id="Curve2D_mdsqo"]
+[sub_resource type="Curve2D" id="Curve2D_wfckj"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -275, 0, 0, 0, 0, 0, 275, 0)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_1vvu0"]
+[sub_resource type="Curve2D" id="Curve2D_ik0nb"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 250, 0, 0, 0, 0, 0, 50)
 }
 point_count = 2
 
-[node name="Level" type="Node2D"]
-script = ExtResource("1_0p4nr")
+[sub_resource type="Curve2D" id="Curve2D_7l5cr"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 20, 252, 0, 0, 0, 0, 20, 12)
+}
+point_count = 2
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(299, -300)
-limit_bottom = 300
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
+[sub_resource type="Curve2D" id="Curve2D_5ybwl"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 44, 252, 0, 0, 0, 0, 476, 252)
+}
+point_count = 2
 
-[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_gbbs6")]
-position = Vector2(423, -234)
-camera = NodePath("../Camera2D")
+[sub_resource type="Curve2D" id="Curve2D_wcrep"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 44, 256, 0, 0, 0, 0, 224, 256)
+}
+point_count = 2
 
-[node name="CanvasLayer" parent="." instance=ExtResource("3_aboel")]
-nextLevel = ExtResource("4_e7ijj")
+[sub_resource type="Curve2D" id="Curve2D_7v5jv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -56, 256, 0, 0, 0, 0, 224, 256)
+}
+point_count = 2
 
-[node name="Barrier" type="StaticBody2D" parent="."]
-position = Vector2(299, -300)
-collision_layer = 3
-collision_mask = 3
+[node name="Level" instance=ExtResource("1_8v5pu")]
 
-[node name="Left" type="CollisionShape2D" parent="Barrier"]
-position = Vector2(300, -600)
-shape = SubResource("RectangleShape2D_4xc1j")
+[node name="Finish" parent="." index="3"]
+position = Vector2(296, -1408)
 
-[node name="Right" type="CollisionShape2D" parent="Barrier"]
-position = Vector2(-300, -600)
-shape = SubResource("RectangleShape2D_4xc1j")
-
-[node name="Down" type="CollisionShape2D" parent="Barrier"]
-position = Vector2(0, 300)
-shape = SubResource("RectangleShape2D_2hjoi")
-
-[node name="Finish" type="Area2D" parent="."]
-z_index = -1
-position = Vector2(299, -1400)
-
-[node name="TileMap" type="TileMap" parent="Finish"]
-tile_set = SubResource("TileSet_4vns2")
-format = 2
-layer_0/tile_data = PackedInt32Array(-131066, 0, 0, -131068, 0, 0, -131070, 0, 0, -131072, 0, 0, -65538, 0, 0, -65540, 0, 0, -65542, 0, 0, -7, 0, 0, -5, 0, 0, -3, 0, 0, -1, 0, 0, -65535, 0, 0, -65533, 0, 0, -65531, 0, 0, 6, 0, 0, 4, 0, 0, 2, 0, 0, 0, 0, 0, 65534, 0, 0, 65532, 0, 0, 65530, 0, 0, 131065, 0, 0, 131067, 0, 0, 131069, 0, 0, 131071, 0, 0, 65537, 0, 0, 65539, 0, 0, 65541, 0, 0, -131069, 0, 65536, -131067, 0, 65536, -65530, 0, 65536, -65532, 0, 65536, -65534, 0, 65536, -131071, 0, 65536, -65536, 0, 65536, -65537, 0, 65536, -2, 0, 65536, -65539, 0, 65536, -4, 0, 65536, -65541, 0, 65536, -65543, 0, 65536, -6, 0, 65536, 65529, 0, 65536, 131066, 0, 65536, 65531, 0, 65536, 131068, 0, 65536, 65533, 0, 65536, 131070, 0, 65536, 65535, 0, 65536, 65536, 0, 65536, 1, 0, 65536, 65538, 0, 65536, 3, 0, 65536, 65540, 0, 65536, 5, 0, 65536, 65542, 0, 65536)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Finish"]
-shape = SubResource("RectangleShape2D_2toeb")
-
-[node name="EnemyPath2" parent="." instance=ExtResource("5_px06q")]
+[node name="EnemyPath2" parent="." index="5" instance=ExtResource("5_px06q")]
 position = Vector2(300, -500)
-curve = SubResource("Curve2D_mdsqo")
+curve = SubResource("Curve2D_wfckj")
 speed = 0.02
 
-[node name="EnemyPathY" parent="." instance=ExtResource("5_px06q")]
+[node name="EnemyPathY" parent="." index="6" instance=ExtResource("5_px06q")]
 position = Vector2(500, -550)
-curve = SubResource("Curve2D_1vvu0")
+curve = SubResource("Curve2D_ik0nb")
 follow_barrier = 0
 vertical = true
 speed = 1.0
 
-[node name="EnemyPathY2" parent="." instance=ExtResource("5_px06q")]
+[node name="EnemyPathY2" parent="." index="7" instance=ExtResource("5_px06q")]
 position = Vector2(299, -550)
-curve = SubResource("Curve2D_1vvu0")
+curve = SubResource("Curve2D_ik0nb")
 follow_barrier = 0
 vertical = true
 speed = 1.0
 
-[node name="EnemyPathY3" parent="." instance=ExtResource("5_px06q")]
+[node name="EnemyPathY3" parent="." index="8" instance=ExtResource("5_px06q")]
 position = Vector2(100, -550)
-curve = SubResource("Curve2D_1vvu0")
+curve = SubResource("Curve2D_ik0nb")
 follow_barrier = 0
 vertical = true
 speed = 1.0
 
-[node name="EnemyPath3" parent="." instance=ExtResource("5_px06q")]
+[node name="EnemyPath3" parent="." index="9" instance=ExtResource("5_px06q")]
 position = Vector2(300, -900)
-curve = SubResource("Curve2D_mdsqo")
+curve = SubResource("Curve2D_7l5cr")
+follow_barrier = 100
+vertical = true
+vertical_barrier = true
 speed = 0.02
 
-[node name="EnemyPathY4" parent="." instance=ExtResource("5_px06q")]
-position = Vector2(500, -900)
-curve = SubResource("Curve2D_1vvu0")
-follow_barrier = 0
-vertical = true
-speed = 1.0
-
-[node name="EnemyPathY5" parent="." instance=ExtResource("5_px06q")]
-position = Vector2(299, -900)
-curve = SubResource("Curve2D_1vvu0")
-follow_barrier = 0
-vertical = true
-speed = 1.0
-
-[node name="EnemyPathY6" parent="." instance=ExtResource("5_px06q")]
+[node name="EnemyPathY6" parent="." index="10" instance=ExtResource("5_px06q")]
 position = Vector2(100, -900)
-curve = SubResource("Curve2D_1vvu0")
+curve = SubResource("Curve2D_5ybwl")
 follow_barrier = 0
-vertical = true
 speed = 1.0
 
-[node name="EnemyPath4" parent="." instance=ExtResource("5_px06q")]
+[node name="EnemyPathY10" parent="." index="11" instance=ExtResource("5_px06q")]
+position = Vector2(96, -1016)
+curve = SubResource("Curve2D_wcrep")
+follow_barrier = 0
+speed = 1.0
+
+[node name="EnemyPathY11" parent="." index="12" instance=ExtResource("5_px06q")]
+position = Vector2(88, -1144)
+curve = SubResource("Curve2D_7v5jv")
+follow_barrier = 0
+speed = 1.0
+
+[node name="EnemyPath4" parent="." index="13" instance=ExtResource("5_px06q")]
 position = Vector2(300, -1300)
-curve = SubResource("Curve2D_mdsqo")
+curve = SubResource("Curve2D_wfckj")
 speed = 0.02
 
-[node name="EnemyPathY7" parent="." instance=ExtResource("5_px06q")]
+[node name="EnemyPathY7" parent="." index="14" instance=ExtResource("5_px06q")]
 position = Vector2(500, -1300)
-curve = SubResource("Curve2D_1vvu0")
+curve = SubResource("Curve2D_ik0nb")
 follow_barrier = 0
 vertical = true
 speed = 1.0
 
-[node name="EnemyPathY8" parent="." instance=ExtResource("5_px06q")]
+[node name="EnemyPathY8" parent="." index="15" instance=ExtResource("5_px06q")]
 position = Vector2(299, -1300)
-curve = SubResource("Curve2D_1vvu0")
+curve = SubResource("Curve2D_ik0nb")
 follow_barrier = 0
 vertical = true
 speed = 1.0
 
-[node name="EnemyPathY9" parent="." instance=ExtResource("5_px06q")]
+[node name="EnemyPathY9" parent="." index="16" instance=ExtResource("5_px06q")]
 position = Vector2(100, -1300)
-curve = SubResource("Curve2D_1vvu0")
+curve = SubResource("Curve2D_ik0nb")
 follow_barrier = 0
 vertical = true
 speed = 1.0
-
-[connection signal="body_entered" from="Finish" to="." method="_on_finish_body_entered"]

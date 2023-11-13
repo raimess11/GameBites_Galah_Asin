@@ -5,3 +5,5 @@ extends CharacterBody2D
 @export var speed = 350
 
 var target_position = Vector2.ZERO
+
+var animation

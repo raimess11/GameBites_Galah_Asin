@@ -1,7 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://cp7ip1c1iwflm"]
+[gd_scene load_steps=8 format=3 uid="uid://cp7ip1c1iwflm"]
 
 [ext_resource type="Script" path="res://enemy/enemy.gd" id="1_16heo"]
-[ext_resource type="Texture2D" uid="uid://i38nkw8vkvqi" path="res://assets/enemy.png" id="2_srpk6"]
+[ext_resource type="Texture2D" uid="uid://cqpe3u6lnn2ly" path="res://assets/Player-Sheet.png" id="2_fp3f6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8x8hy"]
+atlas = ExtResource("2_fp3f6")
+region = Rect2(0, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vugfy"]
+atlas = ExtResource("2_fp3f6")
+region = Rect2(20, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7w11s"]
+atlas = ExtResource("2_fp3f6")
+region = Rect2(40, 0, 20, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6c2ko"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8x8hy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vugfy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7w11s")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ssiiw"]
 size = Vector2(46, 22)
@@ -10,11 +39,12 @@ size = Vector2(46, 22)
 collision_layer = 2
 script = ExtResource("1_16heo")
 
-[node name="Icon" type="Sprite2D" parent="."]
+[node name="Icon" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 0.27451, 0.219608, 1)
 texture_filter = 1
-scale = Vector2(11.5, 11)
-texture = ExtResource("2_srpk6")
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_6c2ko")
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ssiiw")
