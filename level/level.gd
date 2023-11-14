@@ -22,20 +22,5 @@ func _on_finish_body_entered(body):
 		$CanvasLayer/Win.visible = true
 		get_tree().paused = true
 
-func get_stick_frame(input:Vector2):
-	if input.is_equal_approx(Vector2.DOWN):
-		return 1
-	elif input.is_equal_approx(Vector2.UP):
-		return 2
-	elif input.x < 0 :
-		return 3
-	elif input.x > 0 :
-		return 4
-	else:
-		return 0
-
 func _process(delta):
-	var input = Input.get_vector("left", "right", "up", "down")
-	Filter.set_stick(get_stick_frame(input))
-	
 	pass # Replace with function body.

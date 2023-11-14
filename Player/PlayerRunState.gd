@@ -11,7 +11,6 @@ func _enter_state():
 
 func _physics_process(delta):
 	player.input_direction = Input.get_vector("left", "right", "up", "down")
-	print(player.input_direction)
 	super._physics_process(delta)
 	player.velocity = player.velocity * runSpeed
 	if StaminaTimer.is_stopped():
@@ -19,9 +18,11 @@ func _physics_process(delta):
 	elif player.input_direction != Vector2.ZERO:
 		player.animation_player.play("Move",-1,1.2)
 		player.collision = player.move_and_collide(player.velocity * delta)
+		Filter.set_stick(Filter.get_stick_frame(player.input_direction))
 	elif (player.position.distance_to(player.target) > 10) and Input.is_action_pressed("leftMouse"):
 		player.animation_player.play("Move",-1,1.2)
 		player.collision = player.move_and_collide(player.velocity * delta)
+		Filter.set_stick(Filter.get_stick_frame(player.target-player.global_position))
 	else:
 		player_normal.emit()
 		
